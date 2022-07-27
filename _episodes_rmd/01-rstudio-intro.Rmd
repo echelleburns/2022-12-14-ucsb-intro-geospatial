@@ -20,6 +20,7 @@ keypoints:
 - "Use `<-` to assign values to variables."
 - "Use `install.packages()` to install packages (libraries)."
 source: Rmd
+output: md_document
 ---
 
 ```{r, include=FALSE}
@@ -374,7 +375,7 @@ The right hand side is *fully evaluated* before the assignment occurs.
 > > One way of answering this question in R is to use the `>` to set up the following:
 > > ```{r ch3-sol}
 > > mass > age
-> >```
+> > ```
 > > This should yield a boolean value of TRUE since `r mass` is greater than `r age`.
 > {: .solution}
 {: .challenge}
@@ -457,7 +458,7 @@ There are two main ways to install packages in R:
 2. We can use the `install.packages( )` function. We can do this to install the `dplyr` R package.
 
 ```{r}
-install.packages("dplyr")
+install.packages("dplyr", repos = "http://cran.us.r-project.org")
 ```
 
 It's important to note that we only need to install the R package on our computer once. Well, if we install a new version of R on the same computer, then we will likely need to also re-install the R packages too.
