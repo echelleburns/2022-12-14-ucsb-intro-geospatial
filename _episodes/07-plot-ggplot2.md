@@ -149,14 +149,12 @@ ggplot(data = gapminder_small, aes(x = country, y = gdpPercap)) +
 <img src="../fig/rmd-07-hist-subset-gapminder-1.png" title="Barplot of GDP per capita. Country names on x-axis overlap and are not readable" alt="Barplot of GDP per capita. Country names on x-axis overlap and are not readable" width="612" style="display: block; margin: auto;" />
 
 With this many bars plotted, it's impossible to read all of the 
-x-axis labels. A quick fix to this is the add the `coord_flip()` 
-function to the end of our plot code.
+x-axis labels. We can fix this by switching the axis that each variable is plotted on, which will create a horizontal bar plot.
 
 
 ~~~
-ggplot(data = gapminder_small, aes(x = country, y = gdpPercap)) + 
-  geom_col() +
-  coord_flip()
+ggplot(data = gapminder_small, aes(x = gdpPercap, y = country)) + 
+  geom_col()
 ~~~
 {: .language-r}
 
