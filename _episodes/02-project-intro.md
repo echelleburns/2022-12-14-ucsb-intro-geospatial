@@ -67,7 +67,7 @@ project.
 >
 > 1. Click the "File" menu button, then "New Project".
 > 2. Click "New Directory".
-> 3. Click "Empty Project".
+> 3. Click "New Project".
 > 4. Type in "r-geospatial" as the name of the directory.
 > 5. Click the "Create Project" button.
 {: .challenge}
