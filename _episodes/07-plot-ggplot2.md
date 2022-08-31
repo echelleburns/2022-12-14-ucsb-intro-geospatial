@@ -200,10 +200,9 @@ later in this workshop.
 > > 
 > > ~~~
 > > ggplot(gapminder_small_2, 
-> >        aes(x = country, y = gdpPercap, 
+> >        aes(x = gdpPercap, y = country, 
 > >        fill = as.factor(year))) +
-> >    geom_col(position = "dodge") + 
-> >    coord_flip()
+> >    geom_col(position = "dodge")
 > > ~~~
 > > {: .language-r}
 > > 
