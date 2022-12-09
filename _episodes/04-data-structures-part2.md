@@ -7,7 +7,6 @@ exercises: 10
 questions:
 - "How can I manipulate a data frame?"
 objectives:
-- "Remove rows with `NA` values."
 - "Append two data frames."
 - "Understand what a `factor` is."
 - "Convert a `factor` to a `character` vector and vice versa."
@@ -15,10 +14,8 @@ objectives:
 keypoints:
 - "Use `cbind()` to add a new column to a data frame."
 - "Use `rbind()` to add a new row to a data frame."
-- "Remove rows from a data frame."
-- "Use `na.omit()` to remove rows from a data frame with `NA` values."
 - "Use `levels()` and `as.character()` to explore and manipulate factors."
-- "Use `str()`, `nrow()`, `ncol()`, `dim()`, `colnames()`, `rownames()`, `head()`, and `typeof()` to understand the structure of a data frame."
+- "Use `str()`, `nrow()`, `ncol()`, `dim()`, `colnames()`, `rownames()`, and `head()` to understand the structure of a data frame."
 - "Read in a csv file using `read.csv()`."
 - "Understand what `length()` of a data frame represents."
 source: Rmd
@@ -464,7 +461,15 @@ gapminder <- cbind(gapminder, below_average)
 ~~~
 {: .language-r}
 
-Now how about adding rows? The rows of a data frame are lists:
+Let's convert our continent column to factors.  
+
+~~~
+gapminder$continent <- as.factor(gapminder$continent)
+~~~
+{: .language-r}
+
+
+Now, how about adding rows? The rows of a data frame are lists:
 
 
 ~~~
@@ -475,6 +480,13 @@ tail(gapminder_norway)
 {: .language-r}
 
 
+~~~
+Warning message:
+In `[<-.factor`(`*tmp*`, ri, value = "Nordic") :
+  invalid factor level, NA generated
+~~~
+{: .warning}
+
 
 ~~~
       country year      pop continent lifeExp  gdpPercap below_average
@@ -483,9 +495,11 @@ tail(gapminder_norway)
 1702 Zimbabwe 1997 11404948    Africa  46.809   792.4500          TRUE
 1703 Zimbabwe 2002 11926563    Africa  39.989   672.0386          TRUE
 1704 Zimbabwe 2007 12311143    Africa  43.487   469.7093          TRUE
-1705   Norway 2016  5000000    Nordic  80.300 49400.0000         FALSE
+1705   Norway 2016  5000000    <NA>    80.300 49400.0000         FALSE
 ~~~
 {: .output}
+
+To understand why R is giving us a warning when we try to add this row, let's learn a little more about factors.
 
 ## Factors
 
@@ -513,7 +527,7 @@ levels(gapminder$continent)
 
 
 ~~~
-NULL
+[1] "Africa"   "Americas" "Asia"     "Europe"   "Oceania" 
 ~~~
 {: .output}
 
@@ -527,15 +541,6 @@ gapminder_norway  <- rbind(gapminder,
 {: .language-r}
 
 
-
-~~~
-Warning in `[<-.factor`(`*tmp*`, ri, value = structure(c("Asia", "Asia", :
-invalid factor level, NA generated
-~~~
-{: .warning}
-
-
-
 ~~~
 tail(gapminder_norway)
 ~~~
@@ -545,11 +550,11 @@ tail(gapminder_norway)
 
 ~~~
       country year      pop continent lifeExp  gdpPercap below_average
-1700 Zimbabwe 1987  9216418      <NA>  62.351   706.1573          TRUE
-1701 Zimbabwe 1992 10704340      <NA>  60.377   693.4208          TRUE
-1702 Zimbabwe 1997 11404948      <NA>  46.809   792.4500          TRUE
-1703 Zimbabwe 2002 11926563      <NA>  39.989   672.0386          TRUE
-1704 Zimbabwe 2007 12311143      <NA>  43.487   469.7093          TRUE
+1700 Zimbabwe 1987  9216418    Africa  62.351   706.1573          TRUE
+1701 Zimbabwe 1992 10704340    Africa  60.377   693.4208          TRUE
+1702 Zimbabwe 1997 11404948    Africa  46.809   792.4500          TRUE
+1703 Zimbabwe 2002 11926563    Africa  39.989   672.0386          TRUE
+1704 Zimbabwe 2007 12311143    Africa  43.487   469.7093          TRUE
 1705   Norway 2016  5000000    Nordic  80.300 49400.0000         FALSE
 ~~~
 {: .output}
