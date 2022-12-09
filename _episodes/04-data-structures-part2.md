@@ -312,7 +312,7 @@ head(gapminder)
 > >
 > > The object `gapminder` is a data frame with columns
 > >
-> > - `country` and `continent` are factors.
+> > - `country` and `continent` are character vectors.
 > > - `year` is an integer vector.
 > > - `pop`, `lifeExp`, and `gdpPercap` are numeric vectors.
 > >
