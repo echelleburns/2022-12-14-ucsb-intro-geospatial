@@ -487,8 +487,6 @@ tail(gapminder_norway)
 ~~~
 {: .output}
 
-To understand why R is giving us a warning when we try to add this row, let's learn a little more about factors.
-
 ## Factors
 
 Here is another thing to look out for: in a `factor`, each different value
